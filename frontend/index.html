@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b3d5c" />
+  <title>智能客服</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=10" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">
+          <svg class="brand-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M2 18c3-2 6-3 9-2.5s6 2.5 9 1.5 5-3 6-5" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M2 22c4-1.5 8-2 12-1s8 1.5 12 0" stroke="#22d3ee" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+            <circle cx="20" cy="8" r="3" fill="#ff8a65" opacity="0.85"/>
+          </svg>
+          <h1 data-i18n="title">智能客服</h1>
+        </div>
+        <a href="/admin/" class="admin-link" data-i18n-title="adminLink" title="管理后台">⚙</a>
+      </div>
+
+      <div id="connStatus" class="conn-status" data-state="connecting" data-i18n="connConnecting">连接中…</div>
+
+      <div id="ordersPanel" class="orders-panel" hidden>
+        <h2 class="sidebar-subtitle" id="ordersTitle" data-i18n="myOrders">我的订单</h2>
+        <ul id="ordersList" class="orders-list"></ul>
+      </div>
+
+      <button id="newSession" type="button" class="btn-primary" data-i18n="newSession">新对话</button>
+
+      <div class="session-list-wrap">
+        <h2 class="sidebar-subtitle" data-i18n="historySessions">历史会话</h2>
+        <ul id="sessionList" class="session-list"></ul>
+      </div>
+
+      <div id="sessionInfo" class="session-info"></div>
+
+      <div id="authPanel" class="auth-panel">
+        <p id="authStatus" class="auth-status" data-i18n="notLoggedIn">未登录</p>
+        <input id="loginEmail" type="email" data-i18n-placeholder="loginPlaceholder" placeholder="email@gulf.ae" class="auth-input" />
+        <button id="loginBtn" type="button" class="btn-secondary" data-i18n="login">登录</button>
+        <button id="logoutBtn" type="button" class="btn-secondary" data-i18n="logout" hidden>退出</button>
+        <input id="apiKeyInput" type="password" placeholder="API Key（本机保存）" class="auth-input" autocomplete="off" />
+        <button id="saveKeyBtn" type="button" class="btn-secondary">保存 Key</button>
+      </div>
+    </aside>
+
+    <main class="chat">
+      <header class="chat-header">
+        <div class="chat-header-top">
+          <div class="chat-title-wrap">
+            <h2 id="chatWelcome" data-i18n="chatWelcome">您好，有什么可以帮您？</h2>
+            <p id="chatSubtitle" data-i18n="chatSubtitle">跨境购物 · 物流查询 · 退换货 · 多语言支持</p>
+          </div>
+          <div class="cs-switcher" id="csSwitcher" role="tablist" aria-label="切换智能客服">
+            <button type="button" class="cs-btn active" data-profile="c1">智能客服1</button>
+            <button type="button" class="cs-btn" data-profile="c2">智能客服2</button>
+            <button type="button" class="cs-btn" data-profile="c3">智能客服3</button>
+          </div>
+        </div>
+      </header>
+
+      <div id="quickPrompts" class="quick-prompts"></div>
+      <div id="messages" class="messages"></div>
+
+      <div class="input-area">
+        <textarea id="input" data-i18n-placeholder="placeholder" placeholder="输入您的问题…" rows="2"></textarea>
+        <div class="input-actions">
+          <button id="cancel" type="button" class="btn-secondary" data-i18n="cancel" disabled>取消</button>
+          <button id="send" type="button" class="btn-primary" data-i18n="send">发送</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/config.js"></script>
+  <script src="i18n.js?v=10"></script>
+  <script src="app.js?v=10"></script>
+</body>
+</html>
